@@ -10,18 +10,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import "./App.css"
 
 export default function App() {
+  const [appState, setAppState] = React.useState({})
+
   return (
     <div className="app">
       <React.Fragment>
         <BrowserRouter>
+          <Navbar />
           <Routes>
-            <Route path="/" element={<><Navbar /> <LandingPage /></>}/> {/* Landing */}
-            <Route path="/login" element={<><Navbar /> <LoginPage /></>}/> {/* LoginPage */}
-            <Route path="/register" element={<><Navbar /> <RegistrationPage /></>}/> {/* RegistrationPage */}
-            <Route path="/activity" element={<><Navbar /> <ActivityPage /></>}/> {/* ActivityPage or AccessForbidden */}
-            <Route path="/nutrition/*" element={<><Navbar /> <NutritionPage /></>}/> {/* NutritionPage or AccessForbidden */}
-            <Route path="/*" element={<><Navbar /><NotFound /></>}/> {/* NotFound */}
-            <Route path="*" element={<Navbar />} />
+            <Route path="/" element={<LandingPage />}/> {/* Landing */}
+            <Route path="/login" element={ <LoginPage setAppState={setAppState}/>}/> {/* LoginPage */}
+            <Route path="/register" element={ <RegistrationPage setAppState={setAppState}/>}/> {/* RegistrationPage */}
+            <Route path="/activity" element={<ActivityPage setAppState={setAppState} appState={appState} user={appState?.user}/>}/> {/* ActivityPage or AccessForbidden */}
+            <Route path="/nutrition/*" element={<NutritionPage />}/> {/* NutritionPage or AccessForbidden */}
+            <Route path="/*" element={<NotFound />}/> {/* NotFound */}
           </Routes>
         </BrowserRouter>
       </React.Fragment>
