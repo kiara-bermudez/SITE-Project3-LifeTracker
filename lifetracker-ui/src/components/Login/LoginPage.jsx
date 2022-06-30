@@ -57,9 +57,16 @@ export function LoginForm({setAppState}) {
 
   return (
     <div className="login-form">
+
       <h1>Login</h1>
+
+      {Boolean(errors.form) && <span className="error">{errors.form}</span>}
+        <br />
+
       <h2>Email</h2>
+      {errors.email && <span className="error">{errors.email}</span>}
       <input className="form-input" name="email" type="email" placeholder="user@gmail.com" value={form.email} onChange={handleOnInputChange}/>
+      
 
       <h2>Password</h2>
       <input className="form-input" name="password" type="text" placeholder="password" value={form.password} onChange={handleOnInputChange}/>
