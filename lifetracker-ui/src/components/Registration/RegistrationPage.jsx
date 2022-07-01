@@ -135,11 +135,11 @@ export function RegistrationForm({setAppState, user, setUser}) {
 
         <h2>Password</h2>
         {errors.password && <span className="error">{errors.password}</span>}
-        <input className="form-input" name="password" type="text" placeholder="Enter a secure password" value={form.password} onChange={handleOnInputChange}/>
+        <input className="form-input" name="password" type="password" placeholder="Enter a secure password" value={form.password} onChange={handleOnInputChange}/>
 
         <h2>Confirm Password</h2>
         {errors.passwordConfirm && <span className="error">{errors.passwordConfirm}</span>}
-        <input className="form-input" name="passwordConfirm" type="text" placeholder="Confirm your password" value={form.passwordConfirm} onChange={handleOnInputChange}/>      
+        <input className="form-input" name="passwordConfirm" type="password" placeholder="Confirm your password" value={form.passwordConfirm} onChange={handleOnInputChange}/>      
 
         <button className="submit-registration" onClick={handleOnSubmit}>Create Account</button>  
 

@@ -18,6 +18,7 @@ class Nutrition {
                 INSERT INTO nutrition (name, category, calories, image_url, quantity, user_id)
                 VALUES ($1, $2, $3, $4, $5, (SELECT id FROM users WHERE email=$6))
                 RETURNING   id,
+                            name,
                             category,
                             calories,
                             image_url,

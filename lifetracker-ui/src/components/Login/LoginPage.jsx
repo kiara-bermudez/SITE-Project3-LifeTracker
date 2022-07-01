@@ -90,7 +90,7 @@ export function LoginForm({setAppState, user, setUser}) {
       
 
       <h2>Password</h2>
-      <input className="form-input" name="password" type="text" placeholder="password" value={form.password} onChange={handleOnInputChange}/>
+      <input className="form-input" name="password" type="password" placeholder="password" value={form.password} onChange={handleOnInputChange}/>
 
       <button className="submit-login" onClick={handleOnSubmit}>Login</button>
 
