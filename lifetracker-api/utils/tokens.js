@@ -4,9 +4,10 @@ const {SECRET_KEY} = require("../config");
 const generateToken = (data) => jwt.sign(data, SECRET_KEY, {expiresIn: "24h"});
 
 const createUserJwt = (user) => {
+    console.log("create user jwt");
     const payload = {
         email: user.email,
-        isAdmin: user.isAdmin || false
+        user: user.username
     }
     return generateToken(payload);
 }

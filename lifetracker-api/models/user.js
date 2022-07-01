@@ -9,8 +9,8 @@ class User {
             id:user.id,
             username:user.username,
             email:user.email,
-            first_name:user.first_name,
-            last_name:user.last_name,
+            firstName:user.first_name,
+            lastName:user.last_name,
             created_at:user.created_at,
             updated_at:user.updated_at
         }
@@ -44,7 +44,7 @@ class User {
     static async register(credentials) {
         console.log("Registering User");
         // User should submit email, password
-        const requiredFields = ["email", "password", "username", "first_name", "last_name"];
+        const requiredFields = ["email", "password", "username", "firstName", "lastName"];
         // Error: if any fields are missing
         requiredFields.forEach(field => {
             if(!credentials.hasOwnProperty(field)) {
@@ -87,7 +87,7 @@ class User {
             )
             VALUES ($1, $2, $3, $4, $5)
             RETURNING id, email, username, first_name, last_name, password, created_at, updated_at;
-        `, [lowerCasedEmail, lowerCasedUsername, credentials.first_name, credentials.last_name, hashedPassword])
+        `, [lowerCasedEmail, lowerCasedUsername, credentials.firstName, credentials.lastName, hashedPassword])
 
         // Return user
         const user = result.rows[0];

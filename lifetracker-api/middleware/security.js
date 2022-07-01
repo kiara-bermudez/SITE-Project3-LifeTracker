@@ -20,10 +20,10 @@ const extractUserFromJwt = (req, res, next) => {
             res.locals.user = jwt.verify(token, SECRET_KEY);
         }
 
-        return next;
+        return next();
 
     }catch(err) {
-        return next;
+        return next();
     }
 }
 
