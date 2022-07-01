@@ -32,7 +32,12 @@ router.get("/", security.requireAuthenticatedUser, async (req,res,next) => {
 // Get nutrition based on nutrition id
 router.get("/:nutritionId", async (req, res, next) => {
     try {
-
+        const {email} = res.locals.user;
+        const {nutritionId} = req.params;
+        const user = await User.fetchUserByEmail(email);
+        const publicUser = await User.makePublicUser(user);
+        const nutritionEntry = await Nutrition.fetchNutritionById({user:publicUser, nutritionId});
+        return res.status(200).json({nutrition: nutritionEntry});
     }catch(err) {
         next(err);
     }

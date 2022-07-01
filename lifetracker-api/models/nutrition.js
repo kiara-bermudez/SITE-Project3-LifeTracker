@@ -1,5 +1,5 @@
 const db = require("../db");
-const { BadRequestError } = require("../utils/errors");
+const { BadRequestError, NotFoundError } = require("../utils/errors");
 
 class Nutrition {
     static async createNutrition({nutrition, user}) {
@@ -58,7 +58,38 @@ class Nutrition {
         return results.rows;
     }
 
-    
+    static async fetchNutritionById({user, nutritionId}) {
+        if (!user) {
+            throw new BadRequestError("No user provided");
+        }
+
+        console.log("user id", user.id);
+
+        const results = await db.query(
+            `
+                SELECT  n.id,
+                        n.name,
+                        n.category,
+                        n.calories,
+                        n.image_url,
+                        n.quantity,
+                        n.user_id,
+                        u.email,
+                        n.created_at
+                FROM nutrition AS n
+                    JOIN users AS u ON u.id = n.user_id
+                WHERE n.user_id = $1 AND n.id=$2
+            `, [user.id, nutritionId]
+        )
+
+        const nutrition = results.rows[0];
+
+        if (!nutrition) {
+            throw new NotFoundError()
+        }
+
+        return nutrition;
+    }
 }
 
 module.exports = Nutrition;              
