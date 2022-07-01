@@ -2,7 +2,7 @@ require("dotenv").config();
 require("colors");
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
-const SECRET_KEY = process.env.SECRET_KEY || "sicmalahfowleaskd";
+const SECRET_KEY = process.env.SECRET_KEY || "secret_dev_key";
 const BCRYPT_WORK_FACTOR = 13;
 
 function getDatabaseUri() {
