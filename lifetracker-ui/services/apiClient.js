@@ -16,14 +16,6 @@ class ApiClient {
     async request({ endpoint, method=`GET`, data={}}) {
         const url = `${this.remoteHostUrl}/${endpoint}`;
 
-        // const headers = {
-        //     "Content-Type": "application/json"
-        // }
-
-        // if (this.token) {
-        //     headers["Authorization"] = `Bearer ${this.token}`;
-        // }
-
         const headers = {
             "Content-Type": "application/json",
             "Authorization": this.token ? `Bearer ${this.token}` : "",

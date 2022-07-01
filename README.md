@@ -658,10 +658,10 @@ Here are the pieces of functionality that should be built out for the backend:
   - [ ] The **Nutrition** model
     - [ ] In the `models` directory, create two new files: `models/nutrition.js` and `models/nutrition.test.js`
       - [ ] The `Nutrition` model should have **at least** the following static methods:
-        - [ ] `createNutrition`
-          - [ ] Should insert a new nutrition instance into the database when values are supplied for all of the required fields: `"name"`, `"category"`, `"calories"`, and `"image_url"`. The `quantity` field should default to `1`.
-          - [ ] The new nutrition instance should have its `user_id` field set to the `id` of the authenticated user
-          - [ ] Should throw a `BadRequestError` (`400` status code) or `UnprocessableEntityError` (`422` status code) when any of those values are not supplied.
+        - [X] `createNutrition`
+          - [X] Should insert a new nutrition instance into the database when values are supplied for all of the required fields: `"name"`, `"category"`, `"calories"`, and `"image_url"`. The `quantity` field should default to `1`.
+          - [X] The new nutrition instance should have its `user_id` field set to the `id` of the authenticated user
+          - [X] Should throw a `BadRequestError` (`400` status code) or `UnprocessableEntityError` (`422` status code) when any of those values are not supplied.
         - [ ] `fetchNutritionById`
           - [ ] When supplied with a valid `id`, fetches the a nutrition instance from the database that matches that `id`.
           - [ ] If no nutrition instance matches that `id`, throws a `NotFoundError` (`404` status code)
@@ -707,9 +707,9 @@ Here are the pieces of functionality that should be built out for the backend:
       - [ ] A new Express router should be created that will be mounted at the `/nutrition` endpoint. It should handle:
         - [ ] `GET` requests to the `/` endpoint
           - [ ] It should send a JSON response back to the client with all of the user-owned nutrition instances in an array like so: `{ "nutritions": [...] }`
-        - [ ] `POST` requests to the `/` endpoint
-          - [ ] It should accept a request body with one `nutrition` key containing an object with all the attributes of the `nutrition` entry
-          - [ ] It should send a JSON response back to the client with a `201` status code, and the newly created nutrition instance like so: `{ "nutrition": { ... } }`
+        - [X] `POST` requests to the `/` endpoint
+          - [X] It should accept a request body with one `nutrition` key containing an object with all the attributes of the `nutrition` entry
+          - [X] It should send a JSON response back to the client with a `201` status code, and the newly created nutrition instance like so: `{ "nutrition": { ... } }`
         - [ ] `GET` requests to the `/:nutritionId` endpoint
           - [ ] It should send a JSON response back to the client with the nutrition instance that matches the `:nutritionId` parameter like so: `{ "nutrition": { ... } }`
     - [ ] In the `routes/nutrition.test.js` file:

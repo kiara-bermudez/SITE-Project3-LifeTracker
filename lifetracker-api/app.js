@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const authRoutes = require("./routes/auth");
 const security = require("./middleware/security");
+const nutritionRoutes = require("./routes/nutrition");
 
 const { NotFoundError} = require("./utils/errors")
 
@@ -17,6 +18,7 @@ console.log("middleware")
 app.use(security.extractUserFromJwt);
 
 app.use("/auth", authRoutes);
+app.use("/nutrition", nutritionRoutes);
 
 // Health endpoint
 app.get("/",  (req, res, next) => {
