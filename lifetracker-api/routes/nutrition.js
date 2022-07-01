@@ -4,6 +4,7 @@ const User = require("../models/user");
 const security = require("../middleware/security");
 const router = express.Router();
 const Nutrition = require("../models/nutrition");
+const permissions = require("../middleware/permissions");
 
 // Create a new nutrition entry
 router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
@@ -30,12 +31,14 @@ router.get("/", security.requireAuthenticatedUser, async (req,res,next) => {
 })
 
 // Get nutrition based on nutrition id
-router.get("/:nutritionId", async (req, res, next) => {
+router.get("/:nutritionId", security.requireAuthenticatedUser, permissions.authedUserOwnsNutrition, async (req, res, next) => {
     try {
         const {email} = res.locals.user;
         const {nutritionId} = req.params;
+        console.log("locals", res.locals);
         const user = await User.fetchUserByEmail(email);
         const publicUser = await User.makePublicUser(user);
+        console.log("public user", publicUser);
         const nutritionEntry = await Nutrition.fetchNutritionById({user:publicUser, nutritionId});
         return res.status(200).json({nutrition: nutritionEntry});
     }catch(err) {

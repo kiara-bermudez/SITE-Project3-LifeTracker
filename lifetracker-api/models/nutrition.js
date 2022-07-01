@@ -46,7 +46,7 @@ class Nutrition {
                         n.image_url,
                         n.quantity,
                         n.user_id,
-                        u.email,
+                        u.email as "user_email",
                         n.created_at
                 FROM nutrition AS n
                     JOIN users AS u ON u.id = n.user_id
@@ -62,7 +62,7 @@ class Nutrition {
         if (!user) {
             throw new BadRequestError("No user provided");
         }
-
+        console.log("user", user);
         console.log("user id", user.id);
 
         const results = await db.query(
@@ -74,7 +74,7 @@ class Nutrition {
                         n.image_url,
                         n.quantity,
                         n.user_id,
-                        u.email,
+                        u.email as "user_email",
                         n.created_at
                 FROM nutrition AS n
                     JOIN users AS u ON u.id = n.user_id
