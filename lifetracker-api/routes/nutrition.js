@@ -1,5 +1,6 @@
 const express = require("express");
 const { createUserJwt } = require("../utils/tokens");
+const User = require("../models/user");
 const security = require("../middleware/security");
 const router = express.Router();
 const Nutrition = require("../models/nutrition");
@@ -18,7 +19,11 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
 // Get all user owned nutrition entries
 router.get("/", security.requireAuthenticatedUser, async (req,res,next) => {
     try {
-
+        const {email} = res.locals.user;
+        const user = await User.fetchUserByEmail(email);
+        const publicUser = await User.makePublicUser(user);
+        const allEntries = await Nutrition.listNutritionForUser({user:publicUser});
+        return res.status(200).json({nutritions: allEntries});
     } catch(err) {
         next(err);
     }

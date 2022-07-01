@@ -24,7 +24,7 @@ export function LoginForm({setAppState, user, setUser}) {
     // if user is already logged in,
     // redirect them to the home page
     if (user?.email) {
-      navigate("/")
+      navigate("/activity")
     }
   }, [user, navigate])
 

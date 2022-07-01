@@ -29,6 +29,36 @@ class Nutrition {
         
         return results.rows[0];  
     }
+
+    static async listNutritionForUser({user}) {
+        if (!user) {
+            throw new BadRequestError("No user provided");
+        }
+
+        console.log("user id", user.id);
+
+        const results = await db.query(
+            `
+                SELECT  n.id,
+                        n.name,
+                        n.category,
+                        n.calories,
+                        n.image_url,
+                        n.quantity,
+                        n.user_id,
+                        u.email,
+                        n.created_at
+                FROM nutrition AS n
+                    JOIN users AS u ON u.id = n.user_id
+                WHERE n.user_id = $1
+                ORDER BY n.created_at DESC
+            `, [user.id]
+        )
+
+        return results.rows;
+    }
+
+    
 }
 
-module.exports = Nutrition;
+module.exports = Nutrition;              

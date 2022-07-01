@@ -29,9 +29,7 @@ router.post("/register", async (req, res, next) => {
 router.get("/me", security.requireAuthenticatedUser, async (req,res,next) => {
     try {
         const {email} = res.locals.user;
-        console.log("email", email);
         const user = await User.fetchUserByEmail(email);
-        console.log("user", user);
         const publicUser = await User.makePublicUser(user);
         console.log("public user", publicUser);
         return res.status(200).json({ user: publicUser})
