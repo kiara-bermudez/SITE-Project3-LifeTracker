@@ -4,15 +4,11 @@ const { createUserJwt } = require("../utils/tokens");
 const security = require("../middleware/security");
 const router = express.Router();
 
-// router.get("/me", async (req, res, next) => {
-    
-// })
-
 router.post("/login", async (req, res, next) => {
     try {
         const user = await User.login(req.body);
         const token = createUserJwt(user);
-        return res.status(200).json({user, token});
+        return res.status(200).json({token, user});
     }catch(err) {
         next(err);
     }
@@ -24,7 +20,7 @@ router.post("/register", async (req, res, next) => {
         const user = await User.register(req.body);
         const token = createUserJwt(user);
         console.log("got token")
-        return res.status(201).json({user, token});
+        return res.status(201).json({token, user});
     }catch(err) {
         next(err);
     }

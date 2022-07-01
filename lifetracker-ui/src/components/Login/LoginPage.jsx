@@ -1,24 +1,32 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate, Link } from "react-router-dom"
-import axios from "axios"
+import apiClient from "../../../services/apiClient"
 import "./LoginPage.css"
 
-export default function LoginPage({setAppState}) {
+export default function LoginPage({setAppState, user, setUser}) {
   return (
     <div className="login-page">
-      <LoginForm setAppState={setAppState}/>
+      <LoginForm setAppState={setAppState} user={user} setUser={setUser}/>
     </div>
   )
 }
 
-export function LoginForm({setAppState}) {
+export function LoginForm({setAppState, user, setUser}) {
   const navigate = useNavigate()
-  const [isLoading, setIsLoading] = useState(false)
+  const [isProcessing, setIsProcessing] = useState(false)
   const [errors, setErrors] = useState({})
   const [form, setForm] = useState({
     email: "",
     password: "",
   })
+
+  useEffect(() => {
+    // if user is already logged in,
+    // redirect them to the home page
+    if (user?.email) {
+      navigate("/")
+    }
+  }, [user, navigate])
 
   const handleOnInputChange = (event) => {
     if (event.target.name === "email") {
@@ -34,25 +42,38 @@ export function LoginForm({setAppState}) {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault()
-    setIsLoading(true)
+    setIsProcessing(true)
     setErrors((e) => ({ ...e, form: null }))
 
-    try {
-      const res = await axios.post(`http://localhost:3001/auth/login`, form)
-      if (res?.data) {
-        setAppState(res.data)
-        setIsLoading(false)
-        navigate("/activity")
-      } else {
-        setErrors((e) => ({ ...e, form: "Invalid username/password combination" }))
-        setIsLoading(false)
-      }
-    } catch (err) {
-      console.log(err)
-      const message = err?.response?.data?.error?.message
-      setErrors((e) => ({ ...e, form: message ? String(message) : String(err) }))
-      setIsLoading(false)
+    const { data, error } = await apiClient.login({ email:form.email, password: form.password});
+
+    if (error) {
+      setErrors((e) => ({ ...e, form:error }));
     }
+
+    if (data?.user) {
+      setUser(data.user);
+      apiClient.setToken(data.token);
+    }
+
+    setIsProcessing(false);
+
+    // try {
+    //   const res = await axios.post(`http://localhost:3001/auth/login`, form)
+    //   if (res?.data) {
+    //     setAppState(res.data)
+    //     setIsLoading(false)
+    //     navigate("/activity")
+    //   } else {
+    //     setErrors((e) => ({ ...e, form: "Invalid username/password combination" }))
+    //     setIsLoading(false)
+    //   }
+    // } catch (err) {
+    //   console.log(err)
+    //   const message = err?.response?.data?.error?.message
+    //   setErrors((e) => ({ ...e, form: message ? String(message) : String(err) }))
+    //   setIsLoading(false)
+    // }
   }
 
   return (
