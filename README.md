@@ -646,7 +646,7 @@ Here are the pieces of functionality that should be built out for the backend:
   - [ ] Commit all work to `git`
   - [ ] The **tokens** utility functions
     - [X] In the `utils` directory, create two new files: `utils/tokens.js` and `utils/tokens.test.js`
-      - [ ] At the bare minimum, two functions will be needed:
+      - [X] At the bare minimum, two functions will be needed:
         - [X] One that accepts a JSON payload as an argument and converts it into a JWT
         - [X] One that accepts a JWT as an argument, validates it, and returns the JSON payload encoded within - if it's valid
     - [ ] In the `utils/tokens.test.js` file:
@@ -754,8 +754,8 @@ Here are the pieces of functionality that should be built out for the backend:
         - [X] Extract a parameter from the request endpoint that corresponds to the `id` of the nutrition instance
         - [X] Query the database for that nutrition instance
         - [X] Check that it is owned by the authenticated user
-          - [ ] If it doesn't, it should throw a `ForbiddenError` (`403` status code)
-          - [ ] If the nutrition instance does belong to the authed user, it should attach it to the `locals` property of the `response` as its `nutrition` property so that it doesn't need to be fetched again by the database (this isn't required, but is probably a good idea).
+          - [X] If it doesn't, it should throw a `ForbiddenError` (`403` status code)
+          - [X] If the nutrition instance does belong to the authed user, it should attach it to the `locals` property of the `response` as its `nutrition` property so that it doesn't need to be fetched again by the database (this isn't required, but is probably a good idea).
     - [ ] In the `middleware/permissions.test.js` file:
       - [ ] Test the `authedUserOwnsNutrition` middleware function
         - [ ] Write test cases for:
@@ -763,8 +763,8 @@ Here are the pieces of functionality that should be built out for the backend:
           - [ ] Throws `NotFoundError` if `id` of nutrition isn't found in database
           - [ ] Doesn't throw error if authed user is nutrition owner
           - [ ] (OPTIONAL) Attaches the `nutrition` to the `locals` property of the response when the user owns the nutrition instance
-    - [ ] In the `middleware/permissions.js` file:
-      - [ ] Implement the features outlined in the tests until they're all passing
+    - [X] In the `middleware/permissions.js` file:
+      - [X] Implement the features outlined in the tests until they're all passing
     - [ ] Commit all work to `git`
   - [ ] The **/nutrition** routes
     - [X] In the `routes` directory, create two new files: `routes/nutrition.js` and `routes/nutrition.test.js`

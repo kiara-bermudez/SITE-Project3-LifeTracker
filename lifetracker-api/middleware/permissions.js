@@ -16,9 +16,7 @@ const authedUserOwnsNutrition = async (req, res, next) => {
 
         console.log("here");
 
-        res.locals.post = nutrition;
-
-        console.log("locals", res.locals);
+        res.locals.nutrition = nutrition;
 
         return next();
 

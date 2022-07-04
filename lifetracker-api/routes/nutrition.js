@@ -33,13 +33,8 @@ router.get("/", security.requireAuthenticatedUser, async (req,res,next) => {
 // Get nutrition based on nutrition id
 router.get("/:nutritionId", security.requireAuthenticatedUser, permissions.authedUserOwnsNutrition, async (req, res, next) => {
     try {
-        const {email} = res.locals.user;
-        const {nutritionId} = req.params;
-        console.log("locals", res.locals);
-        const user = await User.fetchUserByEmail(email);
-        const publicUser = await User.makePublicUser(user);
-        console.log("public user", publicUser);
-        const nutritionEntry = await Nutrition.fetchNutritionById({user:publicUser, nutritionId});
+        // Can get the nutrition info from locals because we already fetched and put the info in the authedUserOwnsNutrition middleware in permissions
+        const nutritionEntry = res.locals.nutrition;
         return res.status(200).json({nutrition: nutritionEntry});
     }catch(err) {
         next(err);
