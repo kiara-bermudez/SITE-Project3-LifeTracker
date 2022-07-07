@@ -803,11 +803,11 @@ Here are the pieces of functionality that should be built out for the backend:
 - **Summary Statistics**
   - [ ] One of the last features of the API will be a model that calculates summary statistic on the different resources that users are tracking. This includes statistics like average calories per day, or max calories per category. To do that, we'll create a new `Activity` model and an `activity` route that will be used to populate the frontend.
   - [ ] The **Activity** model
-    - [ ] In the `models` directory, create two new files: `models/Activity.js` and `models/Activity.test.js`
-      - [ ] The `Activity` model should have **at least** the following static methods:
-        - [ ] `calculateDailyCaloriesSummaryStats`
-          - [ ] Should execute a SQL query that calculates **at least** the total calories consumed per day (aliased as `totalCaloriesPerDay`), along with the day (aliased as `date`).
-          - [ ] The query should return a row for **each day** containing the total calories consumed per day, and the average calric content per nutrition entry.
+    - [X] In the `models` directory, create two new files: `models/Activity.js` and `models/Activity.test.js`
+      - [X] The `Activity` model should have **at least** the following static methods:
+        - [X] `calculateDailyCaloriesSummaryStats`
+          - [X] Should execute a SQL query that calculates **at least** the total calories consumed per day (aliased as `totalCaloriesPerDay`), along with the day (aliased as `date`).
+          - [X] The query should return a row for **each day** containing the total calories consumed per day, and the average calric content per nutrition entry.
             - [ ] For instance, here's a set of 7 **simplified** nutrition item entries (actual data will look different):
               - 1. `{ id: 1, user_id: 1, calories: 100, category: "candy", created_at: "12-22-2022" }`
               - 2. `{ id: 2, user_id: 1, calories: 200, category: "drink", created_at: "12-22-2022" }`
@@ -820,9 +820,9 @@ Here are the pieces of functionality that should be built out for the backend:
               - 1. `{ date: "12-22-2022", totalCaloriesPerDay: 300 }`
               - 2. `{ date: "12-23-2022", totalCaloriesPerDay: 1000 }`
               - 3. `{ date: "12-24-2022", totalCaloriesPerDay: 800 }`
-        - [ ] `calculatePerCategoryCaloriesSummaryStats`
-          - [ ] Should execute a SQL query that calculates **at least** the average calories consumed per category (aliased as `avgCaloriesPerCategory` and **rounded down to one decimal place**), along with the category (aliased as `category`).
-          - [ ] The query should return a row for **each day** containing the total calories consumed per day, and the average calric content per nutrition entry.
+        - [X] `calculatePerCategoryCaloriesSummaryStats`
+          - [X] Should execute a SQL query that calculates **at least** the average calories consumed per category (aliased as `avgCaloriesPerCategory` and **rounded down to one decimal place**), along with the category (aliased as `category`).
+          - [X] The query should return a row for **each day** containing the total calories consumed per day, and the average calric content per nutrition entry.
             - [ ] For instance, here's a set of 7 **simplified** nutrition item entries (actual data will look different):
               - 1. `{ id: 1, user_id: 1, calories: 100, category: "candy", created_at: "12-22-2022" }`
               - 2. `{ id: 2, user_id: 1, calories: 200, category: "drink", created_at: "12-22-2022" }`
@@ -849,11 +849,11 @@ Here are the pieces of functionality that should be built out for the backend:
       - [ ] Implement the features outlined in the tests until they're all passing
     - [ ] Commit all work to `git`
   - [ ] The **/activity** routes
-    - [ ] In the `routes` directory, create two new files: `routes/activity.js` and `routes/activity.test.js`
-      - [ ] A new Express router should be created that will be mounted at the `/activity` endpoint. It should handle:
-        - [ ] `GET` requests to the `/` endpoint
-          - [ ] It should send a JSON response back to the client with summary stats for each resource in the following format:
-            - [ ] `{ "nutrition": { "calories": { "perDay": [...], "perCategory": [...] }, ...anyOtherStats }, ...statsForOtherResources }`
+    - [X] In the `routes` directory, create two new files: `routes/activity.js` and `routes/activity.test.js`
+      - [X] A new Express router should be created that will be mounted at the `/activity` endpoint. It should handle:
+        - [X] `GET` requests to the `/` endpoint
+          - [X] It should send a JSON response back to the client with summary stats for each resource in the following format:
+            - [X] `{ "nutrition": { "calories": { "perDay": [...], "perCategory": [...] }, ...anyOtherStats }, ...statsForOtherResources }`
     - [ ] In the `routes/activity.test.js` file:
       - [ ] Test the `GET /activity` endpoint
         - [ ] Write test cases for:

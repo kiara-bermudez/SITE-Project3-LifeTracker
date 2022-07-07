@@ -4,8 +4,9 @@ const cors = require('cors');
 const authRoutes = require("./routes/auth");
 const security = require("./middleware/security");
 const nutritionRoutes = require("./routes/nutrition");
+const activityRoutes = require("./routes/activity");
 
-const { NotFoundError} = require("./utils/errors")
+const { NotFoundError} = require("./utils/errors");
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(security.extractUserFromJwt);
 
 app.use("/auth", authRoutes);
 app.use("/nutrition", nutritionRoutes);
+app.use("/activity", activityRoutes);
 
 // Health endpoint
 app.get("/",  (req, res, next) => {
