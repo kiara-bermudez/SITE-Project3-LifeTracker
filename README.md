@@ -371,7 +371,7 @@ The components in the `App.jsx` file should render the following components (alo
       - [X] For each item in the `totalCaloriesPerDay` array, it should render a `SummaryStat.jsx` component.
         - [X] It should pass the calories **rounded down to the nearest whole number** as the `stat` prop
         - [X] It should pass the string of `calories` as the `label` prop
-        - [ ] It should pass the `date` in the format `dd/mm/yyyy` - example: `07/02/2022` - as the `substat` prop
+        - [X] It should pass the `date` in the format `dd/mm/yyyy` - example: `07/02/2022` - as the `substat` prop
 
   - [X] The **`SummaryStat.jsx`** component:
 
@@ -386,22 +386,22 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [ ] The **`nutrition`** context
 
-    - [ ] Create a file in the `contexts directory - `/contexts/nutrition.jsx`
-    - [ ] In that file, define a new `NutritionContext` with `React.createContext`
-    - [ ] Use that context to create a `NutritionContextProvider` component
-      - [ ] The `NutritionContextProvider` component should create state variables and updaters needed for `nutritions`, `initialized`, `isLoading`, and `error`.
-      - [ ] It should call the `useAuthContext` hook and check to see if a valid user is logged in.
-      - [ ] It should have a `React.useEffect` hook that fires when the component is mounted to the screen
-        - [ ] That hook should check to see if a user is logged in.
-        - [ ] If a user is logged in...
-          - [ ] Set the `isLoading` state variable to `true`
-          - [ ] Then, it should make a `GET` request to the `/nutritions` endpoint
-            - [ ] If there is an error with the request, it should set a message as the `error` state variable
-            - [ ] If all goes well:
-              - [ ] It should set the data as the `nutritions` state variable
-          - [ ] Regardless, at the end, set the `isLoading` state variable to `false` and the `initialized` state variable to `true`
-      - [ ] Make sure to pass an object containing all the state variables to the `value` prop of the `NutritionContext.Provider` component
-    - [ ] Create and export a `useNutritionContext` hook that calls the `React.useContext` hook with the newly created `NutritionContext` and returns it.
+    - [X] Create a file in the `contexts directory - `/contexts/nutrition.jsx`
+    - [X] In that file, define a new `NutritionContext` with `React.createContext`
+    - [X] Use that context to create a `NutritionContextProvider` component
+      - [X] The `NutritionContextProvider` component should create state variables and updaters needed for `nutritions`, `initialized`, `isLoading`, and `error`.
+      - [X] It should call the `useAuthContext` hook and check to see if a valid user is logged in.
+      - [X] It should have a `React.useEffect` hook that fires when the component is mounted to the screen
+        - [X] That hook should check to see if a user is logged in.
+        - [X] If a user is logged in...
+          - [X] Set the `isLoading` state variable to `true`
+          - [X] Then, it should make a `GET` request to the `/nutritions` endpoint
+            - [X] If there is an error with the request, it should set a message as the `error` state variable
+            - [X] If all goes well:
+              - [X] It should set the data as the `nutritions` state variable
+          - [X] Regardless, at the end, set the `isLoading` state variable to `false` and the `initialized` state variable to `true`
+      - [X] Make sure to pass an object containing all the state variables to the `value` prop of the `NutritionContext.Provider` component
+    - [X] Create and export a `useNutritionContext` hook that calls the `React.useContext` hook with the newly created `NutritionContext` and returns it.
 
   - [X] The **`NutritionPage.jsx`** component:
 
@@ -413,28 +413,28 @@ The components in the `App.jsx` file should render the following components (alo
         - [X] The `/nutrition/id/:nutritionId` should render the `NutritionDetail.jsx` component
         - [X] Any other route should render the `NotFound` component
 
-  - [ ] The **`NutritionOverview.jsx`** component:
+  - [X] The **`NutritionOverview.jsx`** component:
 
     - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-overview`
-    - [ ] It should call the `useNutritionContext` hook and extract all the necessary data from it.
-      - [ ] If the `error` state variable has a valid string in it, it should render the `error` message inside an element with the `className` of `error`
-      - [ ] If the `isLoading` boolean is `true`, it should render the `Loading.jsx` component
-      - [ ] If the `isLoading` boolean is `false`, it should render the `NutritionFeed.jsx` component and pass it the appropriate props
-    - [ ] Near the top of the component, it should render a `Link` component that directs to the `/nutrition/create` route and contains the text: `"Record Nutrition"`
+    - [X] It should call the `useNutritionContext` hook and extract all the necessary data from it.
+      - [X] If the `error` state variable has a valid string in it, it should render the `error` message inside an element with the `className` of `error`
+      - [X] If the `isLoading` boolean is `true`, it should render the `Loading.jsx` component
+      - [X] If the `isLoading` boolean is `false`, it should render the `NutritionFeed.jsx` component and pass it the appropriate props
+    - [X] Near the top of the component, it should render a `Link` component that directs to the `/nutrition/create` route and contains the text: `"Record Nutrition"`
 
-  - [ ] The **`NutritionFeed.jsx`** component:
+  - [X] The **`NutritionFeed.jsx`** component:
 
     - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-feed`
-    - [ ] It should receive **at least** the following props:
-      - [ ] `nutritions` - an array of `nutrition` items
-    - [ ] If the `nutritions` array has no items in it, it should render an empty message that says `Nothing here yet` inside an element with the `className` of `empty-message`
-    - [ ] If the `nutritions` array does have items in it:
-      - [ ] For each item in the `nutritions` array, it should render a `NutritionCard.jsx` component
+    - [X] It should receive **at least** the following props:
+      - [X] `nutritions` - an array of `nutrition` items
+    - [X] If the `nutritions` array has no items in it, it should render an empty message that says `Nothing here yet` inside an element with the `className` of `empty-message`
+    - [X] If the `nutritions` array does have items in it:
+      - [X] For each item in the `nutritions` array, it should render a `NutritionCard.jsx` component
 
-  - [ ] The **`NutritionNew.jsx`** component:
+  - [X] The **`NutritionNew.jsx`** component:
 
     - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-new`
-    - [ ] Should render the `NutritionForm.jsx` component and pass it the appropriate props
+    - [X] Should render the `NutritionForm.jsx` component and pass it the appropriate props
 
   - [ ] The **`NutritionForm.jsx`** component:
 

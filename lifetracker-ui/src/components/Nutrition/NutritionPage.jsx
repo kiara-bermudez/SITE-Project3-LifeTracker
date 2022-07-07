@@ -8,7 +8,7 @@ import NutritionOverview from "./NutritionOverview"
 export default function NutritionPage() {
   return (
     <div className="nutrition-page">
-      <h1>Nutrition Page</h1>
+      <h1>Nutrition</h1>
       <Routes>
         <Route path="/" element={<NutritionOverview />}/>
         <Route path="/create" element={<NutritionNew />}/>

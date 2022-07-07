@@ -2,21 +2,22 @@ import { useState, createContext, useContext, useEffect } from "react";
 import apiClient from "../services/apiClient";
 import { useAuthContext } from "./auth";
 
-const ActivityContext = createContext(null);
+const NutritionContext = createContext(null);
 
-export const ActivityContextProvider = ({ children }) => {
+export const NutritionContextProvider = ({ children }) => {
     const { user } = useAuthContext();
-    const [activity, setActivity] = useState({});
+    const [nutritions, setNutritions] = useState({});
     const [initialized, setInitialized] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect( () => {
         
-        const fetchActivity = async () => {
-            const { data, error} = await apiClient.fetchActivityStats();
+        const fetchNutritions = async () => {
+            const { data, error} = await apiClient.fetchUserNutritions();
+            console.log("dataaaa", data)
             if (data) {
-                setActivity(data);
+                setNutritions(data.nutritions);
                 setError(null);
             } 
             if (error) {
@@ -27,10 +28,11 @@ export const ActivityContextProvider = ({ children }) => {
             setInitialized(true);
         }
 
+        console.log("here1", user)
         if (user?.email) {
             setIsLoading(true);
             setError(null);
-            fetchActivity();
+            fetchNutritions();
         } else {
             setIsLoading(false);
             setInitialized(true);
@@ -39,9 +41,9 @@ export const ActivityContextProvider = ({ children }) => {
         
     },[user])
 
-    const activityValue = {
-        activity,
-        setActivity,
+    const nutritionValue = {
+        nutritions,
+        setNutritions,
         initialized,
         setInitialized,
         isLoading,
@@ -51,10 +53,10 @@ export const ActivityContextProvider = ({ children }) => {
     }
 
     return (
-        <ActivityContext.Provider value={activityValue}>
+        <NutritionContext.Provider value={nutritionValue}>
             <>{children}</>
-        </ActivityContext.Provider>
+        </NutritionContext.Provider>
     )
 }
 
-export const useActivityContext = () => useContext(ActivityContext);
+export const useNutritionContext = () => useContext(NutritionContext);

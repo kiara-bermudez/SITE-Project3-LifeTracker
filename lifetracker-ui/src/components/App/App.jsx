@@ -12,12 +12,15 @@ import "./App.css"
 import apiClient from "../../../services/apiClient"
 import { AuthContextProvider, useAuthContext } from "../../../contexts/auth"
 import { ActivityContextProvider } from "../../../contexts/activity"
+import { NutritionContextProvider } from "../../../contexts/nutrition"
 
 export default function AppContainer() {
   return (
     <AuthContextProvider>
       <ActivityContextProvider>
-        <App />
+        <NutritionContextProvider>
+          <App />
+        </NutritionContextProvider>
       </ActivityContextProvider>
     </AuthContextProvider>
   )

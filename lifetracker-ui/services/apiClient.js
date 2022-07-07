@@ -51,6 +51,10 @@ class ApiClient {
     async fetchActivityStats() {
         return await this.request({ endpoint: "activity", method:`GET`});
     }
+
+    async fetchUserNutritions() {
+        return await this.request({ endpoint: "nutrition", method:`GET`})
+    }
 }
 
 export default new ApiClient(API_BASE_URL);

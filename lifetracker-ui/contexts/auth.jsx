@@ -41,7 +41,6 @@ export const AuthContextProvider = ({ children }) => {
             
             if (data) {
                 setUser(data.user);
-                console.log("still processing")
                 setError(null);
             } 
             
@@ -50,7 +49,6 @@ export const AuthContextProvider = ({ children }) => {
             }
             setIsProcessing(false);
             setInitialized(true);
-            console.log("finished processing")
         }
 
         // Check to see if JWT token exists in local storage
@@ -59,11 +57,8 @@ export const AuthContextProvider = ({ children }) => {
             apiClient.setToken(token);
             setIsProcessing(true);
             setError(null);
-            console.log("token123", token)
-            console.log("processing...")
             fetchUser();
         } else {
-            console.log("finished processing2")
             setIsProcessing(false);
             setInitialized(true);
         }
