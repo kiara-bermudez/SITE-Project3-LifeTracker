@@ -10,40 +10,49 @@ import * as React from "react"
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"
 import "./App.css"
 import apiClient from "../../../services/apiClient"
+import { AuthContextProvider, useAuthContext } from "../../../contexts/auth"
 
-export default function App() {
+export default function AppContainer() {
+  return (
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
+  )
+}
+
+function App() {
   // const [appState, setAppState] = React.useState({})
   // console.log("appstate", Boolean(appState?.user));
-  const [user, setUser] = React.useState({});
+  const {user, setUser} = useAuthContext();
   console.log("user", user, "user?", Boolean(user?.email));
   const [error, setError] = React.useState({});
 
-  React.useEffect(() => {
-    const fetchUser = async () => {
-      const {data, error} = await apiClient.fetchUserFromToken();
-      console.log("fetched data", data);
-      if (data) setUser(data.user);
-      if (error) setError(error);
-      console.log("fetched user", user);
-    }
+  // React.useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const {data, error} = await apiClient.fetchUserFromToken();
+  //     console.log("fetched data", data);
+  //     if (data) setUser(data.user);
+  //     if (error) setError(error);
+  //     console.log("fetched user", user);
+  //   }
 
-    const token = localStorage.getItem("lifetracker_token");
-    if (token) {
-      apiClient.setToken(token);
-      fetchUser();
-    }
-  }, [])
+  //   const token = localStorage.getItem("lifetracker_token");
+  //   if (token) {
+  //     apiClient.setToken(token);
+  //     fetchUser();
+  //   }
+  // }, [setUser])
 
-  const handleOnLogout = async () => {
-    await apiClient.logout();
-    setUser({});
-  }
+  // const handleOnLogout = async () => {
+  //   await apiClient.logout();
+  //   setUser({});
+  // }
 
   return (
     <div className="app">
       <React.Fragment>
         <BrowserRouter>
-          <Navbar user={user} setUser={setUser} handleOnLogout={handleOnLogout}/>
+          <Navbar />
           <Routes>
             <Route path="/" element={<LandingPage />}/> {/* Landing */}
 

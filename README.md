@@ -203,36 +203,36 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [ ] Create an **`auth`** context:
 
-    - [ ] First, create a `contexts` directory at the root of the project
-    - [ ] Inside it, touch the `contexts/auth.jsx` file
-    - [ ] In that file, define a new `AuthContext` with `React.createContext`
-    - [ ] Use that context to create an `AuthContextProvider` component
-      - [ ] The Provider component should create state variables and updaters needed for `user`, `initialized`, `isProcessing`, and `error`.
-      - [ ] It should have a `React.useEffect` hook that fires when the component is mounted to the screen
-        - [ ] That hook should check to see if a JWT token exists in local storage under the `lifetracker_token` key
-          - [ ] If it does:
-            - [ ] It should add that token to `ApiClient` class with the `setToken` method
-            - [ ] Then, it should set the `isProcessing` state variable to `true` and the `error` state variable to `null`
-            - [ ] Next, it should send a `GET` request to the `/auth/me` endpoint
-              - [ ] If it fails, it should set the `error` prop to a valid error message
-              - [ ] If it is successful...
-                - [ ] It should set the `user` state variable with the `user` returned in the response
-                - [ ] It should set the `error` state variable to `null`
-            - [ ] Regardless, it should set the `isProcessing` state variable to `false` and the `initialized` state variable to `true`
-          - [ ] The user returned from that request should be stored in state. This will ensure that users stay logged in even if they refresh the page.
+    - [X] First, create a `contexts` directory at the root of the project
+    - [X] Inside it, touch the `contexts/auth.jsx` file
+    - [X] In that file, define a new `AuthContext` with `React.createContext`
+    - [X] Use that context to create an `AuthContextProvider` component
+      - [X] The Provider component should create state variables and updaters needed for `user`, `initialized`, `isProcessing`, and `error`.
+      - [X] It should have a `React.useEffect` hook that fires when the component is mounted to the screen
+        - [X] That hook should check to see if a JWT token exists in local storage under the `lifetracker_token` key
+          - [X] If it does:
+            - [X] It should add that token to `ApiClient` class with the `setToken` method
+            - [X] Then, it should set the `isProcessing` state variable to `true` and the `error` state variable to `null`
+            - [X] Next, it should send a `GET` request to the `/auth/me` endpoint
+              - [X] If it fails, it should set the `error` prop to a valid error message
+              - [X] If it is successful...
+                - [X] It should set the `user` state variable with the `user` returned in the response
+                - [X] It should set the `error` state variable to `null`
+            - [X] Regardless, it should set the `isProcessing` state variable to `false` and the `initialized` state variable to `true`
+          - [X] The user returned from that request should be stored in state. This will ensure that users stay logged in even if they refresh the page.
       - [ ] It should also define handler functions for:
         - [ ] `loginUser` - should make a request to log the user in
         - [ ] `signupUser` - should make a request to sign the user up
         - [ ] `fetchUserFromToken` - should make a request to the `/auth/me` route to get the user's info
-        - [ ] `logoutUser` - this function should remove the `lifetracker_token` from local storage and refresh the page so that all user data is reset
-      - [ ] Make sure to set all the state variables as the `value` prop passed to the `AuthContext.Provider` component
-    - [ ] Create and export a `useAuthContext` hook that calls the `React.useContext` hook with the newly created `AuthContext` and returns it.
-    - [ ] In `App.jsx` file create an `AppContainer` component that wraps the `App` component with the `AuthContextProvider` component (which should still be nested inside the `BrowserRouter` component from `react-router-dom`). Export the `AppContainer` component by default instead of the `App`
+        - [X] `logoutUser` - this function should remove the `lifetracker_token` from local storage and refresh the page so that all user data is reset
+      - [X] Make sure to set all the state variables as the `value` prop passed to the `AuthContext.Provider` component
+    - [X] Create and export a `useAuthContext` hook that calls the `React.useContext` hook with the newly created `AuthContext` and returns it.
+    - [X] In `App.jsx` file create an `AppContainer` component that wraps the `App` component with the `AuthContextProvider` component (which should still be nested inside the `BrowserRouter` component from `react-router-dom`). Export the `AppContainer` component by default instead of the `App`
 
-  - [ ] The **`Loading.jsx`** component
+  - [X] The **`Loading.jsx`** component
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `loading`
-    - [ ] Should render an element with the `className` of `loading-message` that contains the text `"Loading"`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `loading`
+    - [X] Should render an element with the `className` of `loading-message` that contains the text `"Loading"`
 
   - [X] The **`Navbar.jsx`** component
 
@@ -243,7 +243,7 @@ The components in the `App.jsx` file should render the following components (alo
       - [X] Inside that `Link` component should be the application's logo (text or image)
     - [X] Should render the `NavLinks.jsx` component with links to each of the resources and the `/activity` route
 
-  - [ ] The **`NavLinks.jsx`** component:
+  - [X] The **`NavLinks.jsx`** component:
 
     - [X] Should render JSX that is wrapped by an element with a `className` of `nav-links`
     - [X] Should render a `Link` element from `react-router-dom` for:
@@ -263,7 +263,7 @@ The components in the `App.jsx` file should render the following components (alo
     - [X] Should render an input element for the following fields:
       - [X] `email`
       - [X] `password`
-    - [ ] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
+    - [X] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
       - [X] `name` - the `name` of the `input` field being rendered (`email`, `password`)
       - [X] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
       - [X] `value` - the current value of the `input` element
@@ -327,7 +327,7 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [ ] The **`activity`** context
 
-    - [ ] Create a file in the `contexts directory - `/contexts/activity.jsx`
+    - [X] Create a file in the `contexts directory - `/contexts/activity.jsx`
     - [ ] In that file, define a new `ActivityContext` with `React.createContext`
     - [ ] Use that context to create an `ActivityContextProvider` component
       - [ ] The `ActivityContextProvider` component should create state variables and updaters needed for `activity`, `initialized`, `isLoading`, and `error`.
