@@ -1,0 +1,62 @@
+.nutrition-page {
+    text-align: center;
+}
+
+.nutrition-page-title {
+    background-color: rgba(75, 210, 75, 0.299);
+    height: 10%;
+    padding: 50px;
+    margin-top: 0;
+}
+
+.nutrition-card {
+    padding: 25px;
+    min-width: 268px;
+    min-height: 171px;
+}
+
+.nutrition-image {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+.nutrition-category {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.side-by-side {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.row1 {
+    justify-content: left;
+}
+
+.row2 {
+    justify-content: space-evenly;   
+    font-size: larger;
+}
+
+.row3 {
+    justify-content: space-between;
+}
+
+.overview {
+    justify-content: space-between;
+    margin: 10px 350px auto 350px;
+}
+
+.record-nutrition {
+    text-decoration: none;
+    border: 2px solid black;
+    text-align: center;
+    align-self: center;
+    padding: 15px;
+}
+

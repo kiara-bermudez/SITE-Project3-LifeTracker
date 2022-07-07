@@ -12,10 +12,13 @@ export const useLoginForm = () => {
     const loginUser = async () => {
         setIsProcessing(true);
         setErrors((e) => ({ ...e, form: null }))
+
+        console.log("datalog", form.email, " errorlog", )
     
         const { data, error } = await apiClient.login({ email:form.email, password: form.password});
     
         if (error) {
+          console.log("error", error)
           setErrors((e) => ({ ...e, form:error }));
         }
     

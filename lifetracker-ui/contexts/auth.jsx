@@ -32,8 +32,6 @@ export const AuthContextProvider = ({ children }) => {
         setUser({});
     }    
 
-
-
     // Set user state if logged in using token
     useEffect(() => {
         const fetchUser = async () => {
@@ -61,8 +59,8 @@ export const AuthContextProvider = ({ children }) => {
         } else {
             setIsProcessing(false);
             setInitialized(true);
-        }
- 
+        }            
+
     }, [setUser])
 
     const authValue = {

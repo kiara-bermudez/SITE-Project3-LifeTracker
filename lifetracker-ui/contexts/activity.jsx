@@ -11,10 +11,15 @@ export const ActivityContextProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    console.log("called", user)
+
     useEffect( () => {
-        
+       
         const fetchActivity = async () => {
             const { data, error} = await apiClient.fetchActivityStats();
+
+            console.log("activity data", data);
+
             if (data) {
                 setActivity(data);
                 setError(null);
@@ -27,6 +32,7 @@ export const ActivityContextProvider = ({ children }) => {
             setInitialized(true);
         }
 
+        console.log("called here", user)
         if (user?.email) {
             setIsLoading(true);
             setError(null);

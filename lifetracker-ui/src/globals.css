@@ -10,7 +10,8 @@ body {
   box-sizing: border-box;
 }
 
-.login-page, .registration-page {
+/* Login, Registration, and Nutrition forms */
+.login-page, .registration-page, .nutrition-new {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,23 +20,41 @@ body {
   height: 100%;
 }
 
-.login-form, .registration-form {
+.login-form, .registration-form, .nutrition-form {
   display: flex;
   flex-direction: column;
-  width: 352px;
+  width: 370px;
   margin: 0 auto 0 auto;
 }
 
-.form-input, .submit-login, .submit-registration {
+.form-input, .submit-login, .submit-registration, .submit-nutrition {
   height: 40px;
   margin-bottom: 15px;
 }
 
-.login-page h2, .registration-page h2 {
+.login-page h2, .registration-page h2, .nutrition-form h2 {
   font-size: larger;
   text-align: left;
 }
 
 .two-input-line {
   display: inline-flex;
+  justify-content: space-between;
+}
+
+/* Nutrition cards and Activity cards*/
+.nutrition-feed, .activity-feed {
+  margin: 10px 250px auto 250px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-auto-flow: row;
+  grid-gap: 50px;
+}
+
+.summary-stat, .nutrition-card {
+  border: 2px solid;
 }

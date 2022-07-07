@@ -9,9 +9,11 @@ export default function NutritionOverview() {
 
   return (
     <div className="nutrition-overview">
-      <h1>Overview</h1>
-
-      <Link to="/nutrition/create" >Record Nutrition</Link>
+      <div className="side-by-side overview">
+        <h1 id="overview-title">Overview</h1>
+        <Link to="/nutrition/create" className="record-nutrition">Record Nutrition</Link>
+      </div>
+      
 
       {error && <span className="error">{error}</span>}
       {isLoading ? <Loading /> : <NutritionFeed nutritions={nutritions}/>}

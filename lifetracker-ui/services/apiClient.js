@@ -15,7 +15,7 @@ class ApiClient {
 
     async request({ endpoint, method=`GET`, data={}}) {
         const url = `${this.remoteHostUrl}/${endpoint}`;
-
+        console.log(url)
         const headers = {
             "Content-Type": "application/json",
             "Authorization": this.token ? `Bearer ${this.token}` : "",
@@ -54,6 +54,10 @@ class ApiClient {
 
     async fetchUserNutritions() {
         return await this.request({ endpoint: "nutrition", method:`GET`})
+    }
+
+    async createNutrition(nutrition) {
+        return await this.request({ endpoint: "nutrition", method:`POST`, data: nutrition} )
     }
 }
 
