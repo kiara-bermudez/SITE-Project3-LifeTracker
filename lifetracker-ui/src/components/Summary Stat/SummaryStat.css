@@ -1,0 +1,13 @@
+.summary-stat {
+    border: 2px solid;
+    margin: 20px;
+}
+
+.primary-statistic p {
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+.secondary-statistic {
+    font-size: 20px;
+}

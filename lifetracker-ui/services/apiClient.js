@@ -47,6 +47,10 @@ class ApiClient {
         this.setToken(null);
         localStorage.setItem(this.tokenName, "");
     }
+
+    async fetchActivityStats() {
+        return await this.request({ endpoint: "activity", method:`GET`});
+    }
 }
 
 export default new ApiClient(API_BASE_URL);

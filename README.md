@@ -170,9 +170,9 @@ The components in the `App.jsx` file should render the following components (alo
 
 - To build out the front-end, start with the `App.jsx` component:
 
-  - [ ] **`App.jsx`**
+  - [X] **`App.jsx`**
     - [X] Should be wrapped by an element with the `className` of `app`
-    - [ ] The core App component that contains the routes for the app wrapped in Context providers
+    - [X] The core App component that contains the routes for the app wrapped in Context providers
     - [X] Renders the `Navbar` component on every route
     - [X] Renders a `BrowserRouter` component that contains a `Routes` component with the following routes:
       - [X] `/` - Should render the `Landing.jsx` component
@@ -199,7 +199,7 @@ The components in the `App.jsx` file should render the following components (alo
       - [X] Add a `login` method that uses the `request` method to send an HTTP request to the `auth/login` endpoint
       - [X] Add a `signup` method that uses the `request` method to send an HTTP request to the `auth/register` endpoint
       - [X] Add a `fetchUserFromToken` method that uses the `request` method to send an HTTP request to the `auth/me` endpoint
-      - [ ] **Add as many other methods as needed when making API requests**
+      - [X] **Add as many other methods as needed when making API requests**
 
   - [ ] Create an **`auth`** context:
 
@@ -257,7 +257,7 @@ The components in the `App.jsx` file should render the following components (alo
       - [X] It should render a `Link` element that redirects to the `/login` route with the label `Login`
       - [X] It should render a `Link` element that redirects to the `/register` route with the label `Sign Up`
 
-  - [ ] The **`LoginForm.jsx`** component:
+  - [X] The **`LoginForm.jsx`** component:
 
     - [X] Should render JSX that is wrapped by an element with the `className` of `login-form`
     - [X] Should render an input element for the following fields:
@@ -300,7 +300,7 @@ The components in the `App.jsx` file should render the following components (alo
       - [X] `value` - the current value of the `input` element
       - [X] `onChange` - the `onChange` handler function
     - [X] The component should validate the `email` field:
-      - [x] If the user has entered text into the `email` field and it doesn't contain an `@` symbol, then an error message should be displayed in an element with the `className` of `error` indicating that the entry is not a valid email.
+      - [X] If the user has entered text into the `email` field and it doesn't contain an `@` symbol, then an error message should be displayed in an element with the `className` of `error` indicating that the entry is not a valid email.
     - [X] The component should validate the `password` and `passwordConfirm` fields:
       - [X] If the user has entered text into the `password` and `passwordConfirm` fields and they don't match, then a message should be displayed in an element with the `className` of `error` with a message that contains the text: `passwords don't match`
     - [X] The component should gracefully handle errors:
@@ -328,61 +328,61 @@ The components in the `App.jsx` file should render the following components (alo
   - [ ] The **`activity`** context
 
     - [X] Create a file in the `contexts directory - `/contexts/activity.jsx`
-    - [ ] In that file, define a new `ActivityContext` with `React.createContext`
-    - [ ] Use that context to create an `ActivityContextProvider` component
-      - [ ] The `ActivityContextProvider` component should create state variables and updaters needed for `activity`, `initialized`, `isLoading`, and `error`.
-      - [ ] It should call the `useAuthContext` hook and check to see if a valid user is logged in.
-      - [ ] It should have a `React.useEffect` hook that fires when the component is mounted to the screen
-        - [ ] That hook should check to see if a user is logged in.
-        - [ ] If a user is logged in...
-          - [ ] Set the `isLoading` state variable to `true` and the `error` state variable to `null`
-          - [ ] Then, it should make a `GET` request to the `/activity` endpoint
-            - [ ] If there is an error with the request, it should set a message as the `error` state variable
-            - [ ] If all goes well...
-              - [ ] It should set the data as the `activity` state variable
-              - [ ] It should set the `error` state variable to `null`
-          - [ ] Regardless, at the end, set the `isLoading` state variable to `false` and the `initialized` state variable to `true`
-      - [ ] Make sure to pass an object containing all the state variables to the `value` prop of the `ActivityContext.Provider` component
-    - [ ] Create and export a `useActivityContext` hook that calls the `React.useContext` hook with the newly created `ActivityContext` and returns it.
-    - [ ] In the `App.jsx` file, nest the `ActivityContextProvider` inside the `AuthContextProvider`.
+    - [X] In that file, define a new `ActivityContext` with `React.createContext`
+    - [X] Use that context to create an `ActivityContextProvider` component
+      - [X] The `ActivityContextProvider` component should create state variables and updaters needed for `activity`, `initialized`, `isLoading`, and `error`.
+      - [X] It should call the `useAuthContext` hook and check to see if a valid user is logged in.
+      - [X] It should have a `React.useEffect` hook that fires when the component is mounted to the screen
+        - [X] That hook should check to see if a user is logged in.
+        - [X] If a user is logged in...
+          - [X] Set the `isLoading` state variable to `true` and the `error` state variable to `null`
+          - [X] Then, it should make a `GET` request to the `/activity` endpoint
+            - [X] If there is an error with the request, it should set a message as the `error` state variable
+            - [X] If all goes well...
+              - [X] It should set the data as the `activity` state variable
+              - [X] It should set the `error` state variable to `null`
+          - [X] Regardless, at the end, set the `isLoading` state variable to `false` and the `initialized` state variable to `true`
+      - [X] Make sure to pass an object containing all the state variables to the `value` prop of the `ActivityContext.Provider` component
+    - [X] Create and export a `useActivityContext` hook that calls the `React.useContext` hook with the newly created `ActivityContext` and returns it.
+    - [X] In the `App.jsx` file, nest the `ActivityContextProvider` inside the `AuthContextProvider`.
 
-  - [ ] The **`ActivityPage.jsx`** component:
+  - [X] The **`ActivityPage.jsx`** component:
 
     - [X] Should render JSX that is wrapped by an element with the `className` of `activity-page`
-    - [ ] It should call the `useActivityContext` hook and extract all the necessary data from it.
-    - [ ] If the `isProcessing` flag is `true`, it should render the `Loading.jsx` component
-    - [ ] If the `isProcessing` flag is `false`, it should render the `ActivityFeed.jsx` component and pass it the appropriate props
+    - [X] It should call the `useActivityContext` hook and extract all the necessary data from it.
+    - [X] If the `isProcessing` flag is `true`, it should render the `Loading.jsx` component
+    - [X] If the `isProcessing` flag is `false`, it should render the `ActivityFeed.jsx` component and pass it the appropriate props
 
   - [ ] The **`ActivityFeed.jsx`** component:
 
     - [X] Should render JSX that is wrapped by an element with the `className` of `activity-feed`
-    - [ ] Should accept **at least** the following props:
-      - [ ] `totalCaloriesPerDay` - an array of items containing summary data about the total calories consumed per day
-      - [ ] `avgCaloriesPerCategory` - an array of items containing summary data about the average calories consumed per category
+    - [X] Should accept **at least** the following props:
+      - [X] `totalCaloriesPerDay` - an array of items containing summary data about the total calories consumed per day
+      - [X] `avgCaloriesPerCategory` - an array of items containing summary data about the average calories consumed per category
       - [ ] Any other
     - [X] Inside an element with the `className` of `per-category`, it should:
       - [X] Render the text: `"Average Calories Per Category` inside an `h4` element
-      - [ ] Take the first `6` or less items in the `avgCaloriesPerCategory` array and render a `SummaryStat.jsx` component for each item.
-        - [ ] It should pass the calories **rounded down to one decimal place** as the `stat` prop
-        - [ ] It should pass the string of `calories` as the `label` prop
-        - [ ] It should pass the `category` as the `substat` prop
-    - [ ] Inside an element with the `className` of `per-day`, it should:
-      - [ ] Render the text: `"Total Calories Per Day` inside an `h4` element
-      - [ ] For each item in the `totalCaloriesPerDay` array, it should render a `SummaryStat.jsx` component.
-        - [ ] It should pass the calories **rounded down to the nearest whole number** as the `stat` prop
-        - [ ] It should pass the string of `calories` as the `label` prop
+      - [X] Take the first `6` or less items in the `avgCaloriesPerCategory` array and render a `SummaryStat.jsx` component for each item.
+        - [X] It should pass the calories **rounded down to one decimal place** as the `stat` prop
+        - [X] It should pass the string of `calories` as the `label` prop
+        - [X] It should pass the `category` as the `substat` prop
+    - [X] Inside an element with the `className` of `per-day`, it should:
+      - [X] Render the text: `"Total Calories Per Day` inside an `h4` element
+      - [X] For each item in the `totalCaloriesPerDay` array, it should render a `SummaryStat.jsx` component.
+        - [X] It should pass the calories **rounded down to the nearest whole number** as the `stat` prop
+        - [X] It should pass the string of `calories` as the `label` prop
         - [ ] It should pass the `date` in the format `dd/mm/yyyy` - example: `07/02/2022` - as the `substat` prop
 
-  - [ ] The **`SummaryStat.jsx`** component:
+  - [X] The **`SummaryStat.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `summary-stat`
-    - [ ] Should accept **at least** the following props:
-      - [ ] `stat` - the primary statistic to display
-      - [ ] `label` - the unit label assigned to the statistic
-      - [ ] `substat` - a secondary statistic related to the primary statistic
-    - [ ] It should render the `stat` prop inside an element with the `className` of `primary-statistic`
-    - [ ] It should render the `label` prop inside an element with the `className` of `stat-label`
-    - [ ] It should render the `substat` prop inside an element with the `className` of `secondary-statistic`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `summary-stat`
+    - [X] Should accept **at least** the following props:
+      - [X] `stat` - the primary statistic to display
+      - [X] `label` - the unit label assigned to the statistic
+      - [X] `substat` - a secondary statistic related to the primary statistic
+    - [X] It should render the `stat` prop inside an element with the `className` of `primary-statistic`
+    - [X] It should render the `label` prop inside an element with the `className` of `stat-label`
+    - [X] It should render the `substat` prop inside an element with the `className` of `secondary-statistic`
 
   - [ ] The **`nutrition`** context
 

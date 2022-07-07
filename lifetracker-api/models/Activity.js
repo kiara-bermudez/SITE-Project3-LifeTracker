@@ -11,8 +11,8 @@ class Activity {
 
         const results = await db.query(
             `
-                SELECT  n.created_at::date AS "date", 
-                        SUM(n.calories) AS "totalCaloriesPerDay"
+                SELECT  to_char(n.created_at, 'mm/dd/yyyy') AS "date", 
+                        ROUND(SUM(n.calories),0) AS "totalCaloriesPerDay"
                 FROM nutrition AS n
                     JOIN users AS u ON u.id = n.user_id
                 WHERE n.user_id = $1
@@ -32,7 +32,7 @@ class Activity {
         const results = await db.query(
             `
                 SELECT  n.category AS "category",
-                        ROUND(AVG(n.calories)) AS "avgCaloriesPerCategory"
+                        ROUND(AVG(n.calories),1) AS "avgCaloriesPerCategory"
                         
                 FROM nutrition AS n
                     JOIN users AS u ON u.id = n.user_id

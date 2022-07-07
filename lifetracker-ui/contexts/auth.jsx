@@ -32,6 +32,44 @@ export const AuthContextProvider = ({ children }) => {
         setUser({});
     }    
 
+
+
+    // Set user state if logged in using token
+    useEffect(() => {
+        const fetchUser = async () => {
+            const {data, error} = await apiClient.fetchUserFromToken();
+            
+            if (data) {
+                setUser(data.user);
+                console.log("still processing")
+                setError(null);
+            } 
+            
+            if (error) {
+                setError(error);
+            }
+            setIsProcessing(false);
+            setInitialized(true);
+            console.log("finished processing")
+        }
+
+        // Check to see if JWT token exists in local storage
+        const token = localStorage.getItem("lifetracker_token");
+        if (token) {
+            apiClient.setToken(token);
+            setIsProcessing(true);
+            setError(null);
+            console.log("token123", token)
+            console.log("processing...")
+            fetchUser();
+        } else {
+            console.log("finished processing2")
+            setIsProcessing(false);
+            setInitialized(true);
+        }
+ 
+    }, [setUser])
+
     const authValue = {
         user,
         setUser,
@@ -44,36 +82,6 @@ export const AuthContextProvider = ({ children }) => {
         loginUser,
         logoutUser
     }
-
-    // Set user state if logged in using token
-    useEffect(() => {
-        const fetchUser = async () => {
-            const {data, error} = await apiClient.fetchUserFromToken();
-            console.log("fetched data", data);
-            if (data) {
-                setUser(data.user);
-                setError(null);
-            } 
-            if (error) {
-                setError(error);
-            }
-            console.log("fetched user", user);
-        }
-
-        // Check to see if JWT token exists in local storage
-        const token = localStorage.getItem("lifetracker_token");
-        if (token) {
-            apiClient.setToken(token);
-            setIsProcessing(true);
-            setError(null);
-            fetchUser();
-        }
-
-        setIsProcessing(false);
-        setInitialized(true);
-    }, [setUser])
-
-
 
     return (
         <AuthContext.Provider value={authValue}>

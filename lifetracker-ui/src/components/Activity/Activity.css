@@ -1,0 +1,14 @@
+.activity-feed {
+    margin: 10px 200px auto 200px;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-auto-flow: row;
+}
+
+.per-category {
+    margin-top: 40px;
+}

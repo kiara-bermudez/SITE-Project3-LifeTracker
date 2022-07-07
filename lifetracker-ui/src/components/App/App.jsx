@@ -11,11 +11,14 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"
 import "./App.css"
 import apiClient from "../../../services/apiClient"
 import { AuthContextProvider, useAuthContext } from "../../../contexts/auth"
+import { ActivityContextProvider } from "../../../contexts/activity"
 
 export default function AppContainer() {
   return (
     <AuthContextProvider>
-      <App />
+      <ActivityContextProvider>
+        <App />
+      </ActivityContextProvider>
     </AuthContextProvider>
   )
 }
@@ -23,30 +26,8 @@ export default function AppContainer() {
 function App() {
   // const [appState, setAppState] = React.useState({})
   // console.log("appstate", Boolean(appState?.user));
-  const {user, setUser} = useAuthContext();
+  const {user} = useAuthContext();
   console.log("user", user, "user?", Boolean(user?.email));
-  const [error, setError] = React.useState({});
-
-  // React.useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const {data, error} = await apiClient.fetchUserFromToken();
-  //     console.log("fetched data", data);
-  //     if (data) setUser(data.user);
-  //     if (error) setError(error);
-  //     console.log("fetched user", user);
-  //   }
-
-  //   const token = localStorage.getItem("lifetracker_token");
-  //   if (token) {
-  //     apiClient.setToken(token);
-  //     fetchUser();
-  //   }
-  // }, [setUser])
-
-  // const handleOnLogout = async () => {
-  //   await apiClient.logout();
-  //   setUser({});
-  // }
 
   return (
     <div className="app">
@@ -56,11 +37,11 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />}/> {/* Landing */}
 
-            <Route path="/login" element={ <LoginPage user={user} setUser={setUser}/>}/> {/* LoginPage */}
+            <Route path="/login" element={ <LoginPage />}/> {/* LoginPage */}
             
-            <Route path="/register" element={ <RegistrationPage user={user} setUser={setUser}/>}/> {/* RegistrationPage */}
+            <Route path="/register" element={ <RegistrationPage />}/> {/* RegistrationPage */}
 
-            <Route path="/activity" element={Boolean(user?.email)?<ActivityPage  user={user}/>:<AccessForbidden />}/> {/* ActivityPage or AccessForbidden */}
+            <Route path="/activity" element={Boolean(user?.email)?<ActivityPage  />:<AccessForbidden />}/> {/* ActivityPage or AccessForbidden */}
 
             <Route path="/nutrition/*" element={Boolean(user?.email)?<NutritionPage />:<AccessForbidden />}/> {/* NutritionPage or AccessForbidden */}
 
