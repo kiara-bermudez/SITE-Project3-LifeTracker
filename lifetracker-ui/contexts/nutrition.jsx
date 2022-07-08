@@ -5,9 +5,9 @@ import { useAuthContext } from "./auth";
 const NutritionContext = createContext(null);
 
 export const NutritionContextProvider = ({ children }) => {
-    const { user } = useAuthContext();
-    const [nutritions, setNutritions] = useState({});
-    const [initialized, setInitialized] = useState(false);
+    const { user, initialized } = useAuthContext();
+    const [nutritions, setNutritions] = useState([]);
+    const [nutrInitialized, setNutrInitialized] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -26,7 +26,7 @@ export const NutritionContextProvider = ({ children }) => {
             }
 
             setIsLoading(false);
-            setInitialized(true);
+            setNutrInitialized(true);
         }
 
         //console.log("here1", user)
@@ -36,7 +36,7 @@ export const NutritionContextProvider = ({ children }) => {
             fetchNutritions();
         } else {
             setIsLoading(false);
-            setInitialized(true);
+            setNutrInitialized(true);
         }
 
         
@@ -46,7 +46,7 @@ export const NutritionContextProvider = ({ children }) => {
         nutritions,
         setNutritions,
         initialized,
-        setInitialized,
+        nutrInitialized,
         isLoading,
         setIsLoading,
         error,

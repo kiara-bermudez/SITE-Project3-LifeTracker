@@ -20,7 +20,7 @@ class ApiClient {
             "Content-Type": "application/json",
             "Authorization": this.token ? `Bearer ${this.token}` : "",
         }
-
+        console.log("token", this.token)
         try {
             const res = await axios({url, method, data, headers});
             return {data: res.data, error: null};
@@ -58,6 +58,10 @@ class ApiClient {
 
     async createNutrition(nutrition) {
         return await this.request({ endpoint: "nutrition", method:`POST`, data: nutrition} )
+    }
+
+    async fetchNutritionById(nutritionId) {
+        return await this.request({ endpoint: `nutrition/${nutritionId}`, method:`GET`})
     }
 }
 

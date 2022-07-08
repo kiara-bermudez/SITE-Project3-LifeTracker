@@ -5,7 +5,7 @@ import { useNutritionContext } from "../../../contexts/nutrition"
 import NutritionFeed from "./NutritionFeed";
 
 export default function NutritionOverview() {
-  const { nutritions, error, isLoading } = useNutritionContext();
+  const { nutritions, error, isLoading, nutrInitialized, initialized } = useNutritionContext();
 
   return (
     <div className="nutrition-overview">
@@ -16,7 +16,7 @@ export default function NutritionOverview() {
       
 
       {error && <span className="error">{error}</span>}
-      {isLoading ? <Loading /> : <NutritionFeed nutritions={nutritions}/>}
+      {isLoading || !initialized || !nutrInitialized ? <Loading /> : <NutritionFeed nutritions={nutritions}/>}
     </div>
   )
 }

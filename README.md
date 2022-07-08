@@ -40,7 +40,7 @@ Building this application you will accomplish the following:
 - [X] When a user first authenticates, they should be redirected to an authenticated view (i.e the detailed activity page). When they sign out, all frontend data should be reset.
 - [ ] Users have access to an overview Activity page that show one summary statistic about each of the 3 types of activity tracked.
 - [X] The API should have a `security` middleware that only allows authenticated users to access resources and only allows users to access resources about themselves. 
-- [ ] Users should have the ability to track at least **1** types of activities (i.e Nutrition, Exercise, Sleep, etc.). Each activity should be tracked on separate pages.
+- [X] Users should have the ability to track at least **1** types of activities (i.e Nutrition, Exercise, Sleep, etc.). Each activity should be tracked on separate pages.
 - [ ] Deployed website with Heroku & Surge. 
 
 **Detailed Activity Page:**
@@ -462,10 +462,10 @@ The components in the `App.jsx` file should render the following components (alo
   - [ ] The **`NutritionDetail.jsx`** component:
 
     - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-detail`
-    - [ ] It should leverage the `useParams` hook from `react-router-dom` to extract the `nutritionId` param from the url
-    - [ ] When the component is mounted to the screen...
-      - [ ] It should make a `GET` request to the `/nutrition/:nutritionId` endpoint with the `axios.get` method.
-      - [ ] The `:nutritionId` part of the request should be replaced with the `nutritionId` pulled from the url.
+    - [X] It should leverage the `useParams` hook from `react-router-dom` to extract the `nutritionId` param from the url
+    - [X] When the component is mounted to the screen...
+      - [X] It should make a `GET` request to the `/nutrition/:nutritionId` endpoint with the `axios.get` method.
+      - [X] The `:nutritionId` part of the request should be replaced with the `nutritionId` pulled from the url.
       - [ ] When the initial request is loading, it should render an `h1` element with the `className` of `loading` and contain the text `"Loading..."`
       - [ ] It should store the `nutrition` received by the request in state and then render a `NutritionCard.jsx` component for that nutrition.
       - [ ] If no `nutrition` is found with that `id`, it should render the `NotFound.jsx` component

@@ -2,19 +2,25 @@ import Loading from "components/Loading/Loading";
 import SummaryStat from "components/Summary Stat/SummaryStat";
 import * as React from "react"
 import { useActivityContext } from "../../../contexts/activity"
+import { Link } from "react-router-dom"
 import "./Activity.css"
 
 export default function ActivityPage() {
-  const { isLoading, activity } = useActivityContext();
-  const totalCaloriesPerDay = activity.nutrition.calories.perDay;
-  const avgCaloriesPerCategory = activity.nutrition.calories.perCategory;
+  const { isLoading, activity, initialized, actInitialized } = useActivityContext();
+  console.log("activity", activity, "isLoading", isLoading, " initialized", initialized);
 
-  console.log("activity", activity);
-  console.log("activity2", activity.nutrition.calories.perDay);
+  let totalCaloriesPerDay = [];
+  let avgCaloriesPerCategory = []; 
+  if (!isLoading && initialized && actInitialized) {
+    totalCaloriesPerDay = activity.nutrition.calories.perDay || [];
+    avgCaloriesPerCategory = activity.nutrition.calories.perCategory || [];
+  }
 
   return (
     <div className="activity-page">
-      {isLoading? <Loading /> : <ActivityFeed totalCaloriesPerDay={totalCaloriesPerDay} avgCaloriesPerCategory={avgCaloriesPerCategory}/>}
+      <h1 className="activity-page-title">Activity Feed</h1>
+      <Link to="/nutrition/create" className="record-nutrition">Record Nutrition</Link>
+      {isLoading? <Loading /> : <ActivityFeed activity={activity} totalCaloriesPerDay={totalCaloriesPerDay} avgCaloriesPerCategory={avgCaloriesPerCategory}/>}
       
     </div>
   )
@@ -27,7 +33,6 @@ export function ActivityFeed(props) {
 
   return (
     <div className="activity-feed">
-      <h1>Activity Feed</h1>
       <div className="per-category">
         <h4>Average Calories Per Category</h4>
         <div className="grid">

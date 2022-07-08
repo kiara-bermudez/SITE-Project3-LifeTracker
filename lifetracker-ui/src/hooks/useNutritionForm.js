@@ -55,8 +55,8 @@ export const useNutritionForm = () => {
     
         if (data?.nutrition) {
             const nutrition = data.nutrition;
-            setNutritions((n) => ({...n, nutrition}));
-            //navigate("/nutrition")
+            setNutritions((n) => ([...n, nutrition]));
+            navigate("/nutrition")
         }
     
         setIsProcessing(false);

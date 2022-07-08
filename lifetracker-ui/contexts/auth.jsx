@@ -32,6 +32,11 @@ export const AuthContextProvider = ({ children }) => {
         setUser({});
     }    
 
+    function onAuthStateChanged(result) {
+        setUser(result)
+        if (!initialized) setInitialized(true)
+    }
+
     // Set user state if logged in using token
     useEffect(() => {
         const fetchUser = async () => {
@@ -61,7 +66,7 @@ export const AuthContextProvider = ({ children }) => {
             setInitialized(true);
         }            
 
-    }, [setUser])
+    }, [])
 
     const authValue = {
         user,
