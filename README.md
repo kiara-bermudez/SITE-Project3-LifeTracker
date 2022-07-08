@@ -38,17 +38,16 @@ Building this application you will accomplish the following:
 - [X] **Login Page:** A form that allows users to login with email and password.
 - [X] **Registration Page:** A form that allows the user to sign up with their email, password, username, first name, and last name.
 - [X] When a user first authenticates, they should be redirected to an authenticated view (i.e the detailed activity page). When they sign out, all frontend data should be reset.
-- [ ] Users have access to an overview Activity page that show one summary statistic about each of the 3 types of activity tracked.
+- [X] Users have access to an overview Activity page that show one summary statistic about each of the 3 types of activity tracked.
 - [X] The API should have a `security` middleware that only allows authenticated users to access resources and only allows users to access resources about themselves. 
 - [X] Users should have the ability to track at least **1** types of activities (i.e Nutrition, Exercise, Sleep, etc.). Each activity should be tracked on separate pages.
 - [ ] Deployed website with Heroku & Surge. 
 
 **Detailed Activity Page:**
-- [ ] The detailed activity page should display a feed of all previous tracked activities.
-- [ ] The detailed activity should contain a form to contain relevant information. (i.e if tracking nutrition this form allows the user to capture calories, timestamp, image, category, etc.) 
-- [ ] The activity tracked should be given a unique id for easy lookup.
-  `TODO://` Add link to table schema in the link code below. Your file should end in `.sql` and show your schema for the detailed activities table. (🚫 Remove this paragraph after adding schema link)
-  * [Table Schema](📝ADD LINK TO TABLE SCHEMA.sql HERE!) 
+- [X] The detailed activity page should display a feed of all previous tracked activities.
+- [X] The detailed activity should contain a form to contain relevant information. (i.e if tracking nutrition this form allows the user to capture calories, timestamp, image, category, etc.) 
+- [X] The activity tracked should be given a unique id for easy lookup.
+  * [Table Schema](lifetracker-schema.sql) 
 
 ### Stretch Features
 
@@ -60,9 +59,8 @@ Implement any of the following features to improve the application:
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+Week 4 gif - Part 1
+![](Project3-Week4-demo.gif)
 
 ### Reflection
 
