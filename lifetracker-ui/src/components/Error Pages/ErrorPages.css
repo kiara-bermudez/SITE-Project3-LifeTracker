@@ -2,3 +2,8 @@
     display: block;
     text-align: center;
 }
+
+.login-link {
+    text-decoration: none;
+    font-size:larger;
+}
