@@ -12,7 +12,7 @@ This application will be built using the battle-tested PERN stack - PostgreSQL, 
 
 Submitted by: Kiara Bermudez
 
-Deployed Application: [Lifetracker Deployed Site](ADD_LINK_HERE)
+Deployed Application: [Lifetracker Deployed Site](https://p3-lifetracker.surge.sh/)
 
 
 ## Goals
@@ -62,16 +62,26 @@ Implement any of the following features to improve the application:
 Week 4 gif - Part 1
 ![](Project3-Week4-demo.gif)
 
+Week 5 gif - Part 2
+![](Project3-Week5-demo.gif)
+
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 Week 4: This week the sql challenges that we did and the sql labs helped when creating the sql database and the database queries that we used for getting the user and nutrition information. I felt very unprepared for the authentication, contexts and writing tests for the backend since at this point we have not learned about that in lecture or lab.
 
+Week 5: This week the labs helped me when implementing my apiClient and gave me a better understanding of how jwt tokens worked since I implemented them last week but didn't fully understand them. This week I felt unprepared creating custom hooks and contexts. I was able to use the video resources given to learn how to implement them and got it working, however, it took a long time and I am still not comfortable with them.
+
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 Week 4: I would have added a lot more CSS to my front end. This week I mainly focused on the backend functionality so I did not have time to make my front end very pretty. I also would have liked to actually connect the frontend to the backend regarding the nutrition page. I have the backend for the nutrition mostly done, so really all I needed to do was connect it to the frontend.
 
+Week 5: Still, I would love to add more CSS. I did not have time this week because of all the issues I had getting the core features done. I also would have liked to been able to get more activities done rather than just the nutrition page.
+
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 Week 4: My project demo was super helpful! Although I didn't have all the features I would have liked implemented at the time, I presented well and received great feedback from the mentors that were present at the demo. Some feedback I received with features I could add was having a login in button on my access forbidden pages, having contrast and consistent css in my front end and trying out email verification and autofill.
+
+Week 5: My demo went well. I was able to answer both the mentor's and Anitya's questions correctly and showed off all of my features. Some features I saw that I would like to implement are: making all pages when unauthorized go to the login page and have a pretty login page with a login button there.
+
 
 ### Open-source libraries used
 
@@ -81,7 +91,7 @@ Week 4: My project demo was super helpful! Although I didn't have all the featur
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
 
-Shout out to my podmates Robert and Likashmi! It was great working with them!
+Shout out to my podmates Robert and Likashmi! It was great working with them! Thanks to TA's Hope and Tatiana for all their help
 
 ## Application Features
 
@@ -199,7 +209,7 @@ The components in the `App.jsx` file should render the following components (alo
       - [X] Add a `fetchUserFromToken` method that uses the `request` method to send an HTTP request to the `auth/me` endpoint
       - [X] **Add as many other methods as needed when making API requests**
 
-  - [ ] Create an **`auth`** context:
+  - [X] Create an **`auth`** context:
 
     - [X] First, create a `contexts` directory at the root of the project
     - [X] Inside it, touch the `contexts/auth.jsx` file
@@ -218,8 +228,8 @@ The components in the `App.jsx` file should render the following components (alo
                 - [X] It should set the `error` state variable to `null`
             - [X] Regardless, it should set the `isProcessing` state variable to `false` and the `initialized` state variable to `true`
           - [X] The user returned from that request should be stored in state. This will ensure that users stay logged in even if they refresh the page.
-      - [ ] It should also define handler functions for:
-        - [ ] `loginUser` - should make a request to log the user in
+      - [X] It should also define handler functions for:
+        - [X] `loginUser` - should make a request to log the user in
         - [ ] `signupUser` - should make a request to sign the user up
         - [ ] `fetchUserFromToken` - should make a request to the `/auth/me` route to get the user's info
         - [X] `logoutUser` - this function should remove the `lifetracker_token` from local storage and refresh the page so that all user data is reset
@@ -247,7 +257,7 @@ The components in the `App.jsx` file should render the following components (alo
     - [X] Should render a `Link` element from `react-router-dom` for:
       - [X] The `/activity` route. It should have a label of `Activity`.
       - [X] The `/nutrition` route. It should have a label of `Nutrition`.
-      - [ ] A route for any other resource page
+      - [X] A route for any other resource page
     - [X] If a valid user is logged in:
       - [X] It should render an element with the `className` of `logout-button` that calls the `logoutUser` function when clicked.
         - [X] That function should remove the `lifetracker_token` from local storage and refresh the page so that all user data is reset.
@@ -323,7 +333,7 @@ The components in the `App.jsx` file should render the following components (alo
       - [X] Render a brief blurb on what this application is about inside an element with the `className` of `cta`
     - [X] Should allow unauthenticated access
 
-  - [ ] The **`activity`** context
+  - [X] The **`activity`** context
 
     - [X] Create a file in the `contexts directory - `/contexts/activity.jsx`
     - [X] In that file, define a new `ActivityContext` with `React.createContext`
@@ -357,7 +367,7 @@ The components in the `App.jsx` file should render the following components (alo
     - [X] Should accept **at least** the following props:
       - [X] `totalCaloriesPerDay` - an array of items containing summary data about the total calories consumed per day
       - [X] `avgCaloriesPerCategory` - an array of items containing summary data about the average calories consumed per category
-      - [ ] Any other
+      - [X] Any other
     - [X] Inside an element with the `className` of `per-category`, it should:
       - [X] Render the text: `"Average Calories Per Category` inside an `h4` element
       - [X] Take the first `6` or less items in the `avgCaloriesPerCategory` array and render a `SummaryStat.jsx` component for each item.
@@ -382,7 +392,7 @@ The components in the `App.jsx` file should render the following components (alo
     - [X] It should render the `label` prop inside an element with the `className` of `stat-label`
     - [X] It should render the `substat` prop inside an element with the `className` of `secondary-statistic`
 
-  - [ ] The **`nutrition`** context
+  - [X] The **`nutrition`** context
 
     - [X] Create a file in the `contexts directory - `/contexts/nutrition.jsx`
     - [X] In that file, define a new `NutritionContext` with `React.createContext`
@@ -434,10 +444,10 @@ The components in the `App.jsx` file should render the following components (alo
     - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-new`
     - [X] Should render the `NutritionForm.jsx` component and pass it the appropriate props
 
-  - [ ] The **`NutritionForm.jsx`** component:
+  - [X] The **`NutritionForm.jsx`** component:
 
     - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-form`
-    - [ ] Should render an input element for the following fields:
+    - [X] Should render an input element for the following fields:
       - [X] `name` - name of the nutrition item (defaults to an empty string)
       - [X] `calories` - number of calories in the nutrition item (defaults to 1)
       - [X] `imageUrl` - the `url` of an image to show for this nutrition item (defaults to an empty string)
@@ -447,26 +457,26 @@ The components in the `App.jsx` file should render the following components (alo
       - [X] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
       - [X] `value` - the current value of the `input` element
       - [X] `onChange` - the `onChange` handler function
-    - [ ] The component should gracefully handle errors:
-      - [ ] If any of the required fields are left blank, there should be an error message inside of an element with the `className` of `error` indicating which fields are required.
-      - [ ] If the user has attempted to create a nutrition entry and gotten a `400` or `422` error, then that message should be displayed inside an element with the `className` of `error`
+    - [X] The component should gracefully handle errors:
+      - [X] If any of the required fields are left blank, there should be an error message inside of an element with the `className` of `error` indicating which fields are required.
+      - [X] If the user has attempted to create a nutrition entry and gotten a `400` or `422` error, then that message should be displayed inside an element with the `className` of `error`
     - [X] There should be a `button` element with the `className` of `submit-nutrition`:
       - [X] It should contain the text `"Save"`
       - [X] When clicked, it should call a function that creates a new nutrition entry
-    - [ ] After the form has been succesfully submitted:
-      - [ ] Ensure that the new nutrition entry is stored in the `nutrition` context's `nutritions` array and is displayed in the `NutritionFeed.jsx` component
-      - [ ] Refetch the `activity` data so that new summary stats will be calculated
+    - [X] After the form has been succesfully submitted:
+      - [X] Ensure that the new nutrition entry is stored in the `nutrition` context's `nutritions` array and is displayed in the `NutritionFeed.jsx` component
+      - [X] Refetch the `activity` data so that new summary stats will be calculated
 
-  - [ ] The **`NutritionDetail.jsx`** component:
+  - [X] The **`NutritionDetail.jsx`** component:
 
     - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-detail`
     - [X] It should leverage the `useParams` hook from `react-router-dom` to extract the `nutritionId` param from the url
     - [X] When the component is mounted to the screen...
       - [X] It should make a `GET` request to the `/nutrition/:nutritionId` endpoint with the `axios.get` method.
       - [X] The `:nutritionId` part of the request should be replaced with the `nutritionId` pulled from the url.
-      - [ ] When the initial request is loading, it should render an `h1` element with the `className` of `loading` and contain the text `"Loading..."`
-      - [ ] It should store the `nutrition` received by the request in state and then render a `NutritionCard.jsx` component for that nutrition.
-      - [ ] If no `nutrition` is found with that `id`, it should render the `NotFound.jsx` component
+      - [X] When the initial request is loading, it should render an `h1` element with the `className` of `loading` and contain the text `"Loading..."`
+      - [X] It should store the `nutrition` received by the request in state and then render a `NutritionCard.jsx` component for that nutrition.
+      - [X] If no `nutrition` is found with that `id`, it should render the `NotFound.jsx` component
 
   - [X] The **`NutritionCard.jsx`** component:
 

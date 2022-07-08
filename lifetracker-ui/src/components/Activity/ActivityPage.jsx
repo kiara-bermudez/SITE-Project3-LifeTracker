@@ -7,7 +7,7 @@ import "./Activity.css"
 
 export default function ActivityPage() {
   const { isLoading, activity, initialized, actInitialized } = useActivityContext();
-
+  console.log(isLoading, " ", initialized, " ", actInitialized)
   let totalCaloriesPerDay = [];
   let avgCaloriesPerCategory = []; 
   if (!isLoading && initialized && actInitialized) {
