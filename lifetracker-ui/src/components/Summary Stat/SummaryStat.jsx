@@ -2,9 +2,6 @@ import * as React from "react"
 import "./SummaryStat.css"
 
 export default function SummaryStat({stat, label, substat}) {
-    console.log("stat", stat)
-    console.log("label", label)
-    console.log("substat", substat)
   return (
     <div className="summary-stat">
       <div className="secondary-statistic">

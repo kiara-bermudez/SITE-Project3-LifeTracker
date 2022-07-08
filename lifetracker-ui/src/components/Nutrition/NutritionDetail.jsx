@@ -11,7 +11,7 @@ export default function NutritionDetail() {
     const [nutrition, setNutrition] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState(null);
-    let foundId = false;
+    const [foundId, setFoundId] = useState(false);
 
     useEffect( async () => {
         setIsLoading(true);
@@ -24,8 +24,8 @@ export default function NutritionDetail() {
     
         if (data?.nutrition) {
             setNutrition(data.nutrition);
-            foundId = true;
-        }        
+            setFoundId(true);
+        }    
 
         setIsLoading(false);
     }, [])

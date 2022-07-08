@@ -9,10 +9,19 @@
     margin-top: 0;
 }
 
+.nutrition-detail {
+    margin: 0 300px auto 300px;
+}
+
 .nutrition-card {
     padding: 25px;
     min-width: 268px;
     min-height: 171px;
+}
+
+.nutrition-card-link {
+    text-decoration: none;
+    color: black;
 }
 
 .nutrition-image {

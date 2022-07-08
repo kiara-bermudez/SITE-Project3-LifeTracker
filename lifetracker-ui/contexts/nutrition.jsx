@@ -16,7 +16,6 @@ export const NutritionContextProvider = ({ children }) => {
         
         const fetchNutritions = async () => {
             const { data, error} = await apiClient.fetchUserNutritions();
-            //console.log("dataaaa", data)
             if (data) {
                 setNutritions(data.nutritions);
                 setError(null);
@@ -29,7 +28,6 @@ export const NutritionContextProvider = ({ children }) => {
             setNutrInitialized(true);
         }
 
-        //console.log("here1", user)
         if (user?.email) {
             setIsLoading(true);
             setError(null);

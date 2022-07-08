@@ -23,6 +23,7 @@ class ApiClient {
         console.log("token", this.token)
         try {
             const res = await axios({url, method, data, headers});
+            console.log("reiskfjgeridkl", res.data, "for", url)
             return {data: res.data, error: null};
         }catch(error) {
             console.error({ errorResponse: error.response})

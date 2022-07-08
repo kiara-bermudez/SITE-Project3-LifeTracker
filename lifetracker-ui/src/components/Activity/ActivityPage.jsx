@@ -7,7 +7,6 @@ import "./Activity.css"
 
 export default function ActivityPage() {
   const { isLoading, activity, initialized, actInitialized } = useActivityContext();
-  console.log("activity", activity, "isLoading", isLoading, " initialized", initialized);
 
   let totalCaloriesPerDay = [];
   let avgCaloriesPerCategory = []; 
@@ -28,8 +27,6 @@ export default function ActivityPage() {
 
 export function ActivityFeed(props) {
   const sixAvgCaloriesPerCategory = props?.avgCaloriesPerCategory.slice(0,6) || [];
-  console.log("avg categories", sixAvgCaloriesPerCategory)
-  console.log("per day", props?.totalCaloriesPerDay)
 
   return (
     <div className="activity-feed">
